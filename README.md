@@ -1,16 +1,46 @@
-## Hi there 👋
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Happy Birthday!</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; background-color: #f0f8ff; }
+        #message-area { margin-top: 30px; font-size: 24px; color: #333; }
+        #click-button { padding: 10px 20px; font-size: 18px; cursor: pointer; background-color: #4CAF50; color: white; border: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
 
-<!--
-**faKe63/faKe63** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+    <h1>Click the button below to unlock your message!</h1>
+    <button id="click-button">Click Me (Clicks Left: <span id="counter">10</span>)</button>
+    <div id="message-area"></div>
 
-Here are some ideas to get you started:
+    <script>
+        // --- CUSTOMIZE THIS ---
+        let clicksNeeded = 10;
+        const finalMessage = "Happy Birthday, Bro! You finally earned the wish! Hope you have a great day!";
+        // -----------------------
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+        let clickCount = 0;
+        const button = document.getElementById('click-button');
+        const counter = document.getElementById('counter');
+        const messageArea = document.getElementById('message-area');
+
+        button.onclick = function() {
+            clickCount++;
+            let remaining = clicksNeeded - clickCount;
+            counter.textContent = remaining;
+
+            if (clickCount >= clicksNeeded) {
+                // Disable the button and show the message
+                button.disabled = true;
+                button.style.backgroundColor = '#ccc';
+                button.textContent = "MESSAGE UNLOCKED!";
+                messageArea.innerHTML = `
+                    <p style="font-size: 36px; color: #ff6347; font-weight: bold;">🎉 ${finalMessage} 🎉</p>
+                `;
+            }
+        };
+    </script>
+
+</body>
+</html>
